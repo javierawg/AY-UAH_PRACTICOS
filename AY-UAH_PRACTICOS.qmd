@@ -1,0 +1,16 @@
+---
+title: "AY-UAH_PRACTICOS"
+format: html
+---
+
+## PRACTICO 01 - POR TRASLADAR
+
+## PRACTICO 02 - POR TRASLADAR
+
+## PRACTICO 03 - POR TRASLADAR
+
+```{r}
+
+
+
+```
