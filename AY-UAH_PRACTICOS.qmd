@@ -10,7 +10,46 @@ format: html
 ## PRACTICO 03 - POR TRASLADAR
 
 ```{r}
+# A. Cargar librerias ----
+pacman::p_load(sjlabelled,
+               dplyr, #Manipulacion de datos
+              stargazer, #Tablas
+              sjmisc, # Tablas
+              summarytools, # Tablas
+              kableExtra, #Tablas
+              sjPlot, #Tablas y gráficos
+              corrplot, # Correlaciones
+              sessioninfo, # Información de la sesión de trabajo
+              ggplot2) # Para la mayoría de los gráficos
 
+# B. Cargar base de datos ----
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData"))
+  #exploracion preliminar
+    names(proc_data)
+    dim(proc_data)
 
+# C. Descripción de variables ----
 
+    ## C.1 Tablas descriptivas ----
+    
+    ### con STARGAZER
+stargazer(proc_data,type = "text")
+    
 ```
+```{r}
+    ### con SJMISC::DESCR
+# sjmisc::descr(proc_data)
+# con selección de muestra y formato:
+sjmisc::descr(proc_data,
+      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
+      kable(.,"markdown")
+```
+```{r}
+   ## con summarytools::dfSummary
+# summarytools::dfSummary(proc_data, plain.ascii = FALSE)
+# con formato publicable:
+view(dfSummary(proc_data, headings=FALSE))
+
+freq(proc_data$conf_inst)
+```
+
